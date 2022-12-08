@@ -152,10 +152,10 @@ xnoremap p "_c<ESC>p
 nnoremap <silent> gb :<C-U>call buf_utils#GoToBuffer(v:count, 'forward')<CR>
 nnoremap <silent> gB :<C-U>call buf_utils#GoToBuffer(v:count, 'backward')<CR>
 
-"nnoremap <Left> <C-W>h
-"nnoremap <Right> <C-W>l
-"nnoremap <Up> <C-W>k
-"nnoremap <Down> <C-W>j
+" nnoremap <Left> <C-W>h
+" nnoremap <Right> <C-W>l
+" nnoremap <Up> <C-W>k
+" nnoremap <Down> <C-W>j
 
 " Text objects for URL
 xnoremap <silent> iu :<C-U>call text_obj#URL()<CR>
