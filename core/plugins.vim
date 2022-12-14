@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " Plugin specification and lua stuff
-lua require('lua-init')
+lua require('plugins')
 
 " Use short names for common plugin manager commands to simplify typing.
 " To use these shortcuts: first activate command line with `:`, then input the
@@ -137,31 +137,6 @@ let g:mundo_width = 80
 
 nnoremap <silent> <Space>u :MundoToggle<CR>
 
-""""""""""""""""""""""""""""vim-yoink settings"""""""""""""""""""""""""
-if g:is_win || g:is_mac
-  " ctrl-n and ctrl-p will not work if you add the TextChanged event to vim-auto-save events.
-  " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-  " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
-
-  " The following p/P mappings are also needed for ctrl-n and ctrl-p to work
-  " nmap p <plug>(YoinkPaste_p)
-  " nmap P <plug>(YoinkPaste_P)
-
-  " Cycle the yank stack with the following mappings
-  nmap [y <plug>(YoinkRotateBack)
-  nmap ]y <plug>(YoinkRotateForward)
-
-  " Do not change the cursor position
-  nmap y <plug>(YoinkYankPreserveCursorPosition)
-  xmap y <plug>(YoinkYankPreserveCursorPosition)
-
-  " Move cursor to end of paste after multiline paste
-  let g:yoinkMoveCursorToEndOfPaste = 0
-
-  " Record yanks in system clipboard
-  let g:yoinkSyncSystemClipboardOnFocus = 1
-endif
-
 """"""""""""""""""""""""""""better-escape.vim settings"""""""""""""""""""""""""
 let g:better_escape_interval = 200
 
@@ -182,23 +157,7 @@ let g:neoformat_c_clangformat = {
 let g:neoformat_enabled_cpp = ['clangformat']
 let g:neoformat_enabled_c = ['clangformat']
 
-"""""""""""""""""""""""""vim-signify settings""""""""""""""""""""""""""""""
-" The VCS to use
-let g:signify_vcs_list = [ 'git' ]
-
-" Change the sign for certain operations
-let g:signify_sign_change = '~'
-
-"""""""""""""""""""""""""vim-fugitive settings""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>gs :Git<CR>
-nnoremap <silent> <leader>gw :Gwrite<CR>
-nnoremap <silent> <leader>gc :Git commit<CR>
-nnoremap <silent> <leader>gd :Gdiffsplit<CR>
-nnoremap <silent> <leader>gpl :Git pull<CR>
-" Note that to use bar literally, we need backslash it, see also `:h :bar`.
-nnoremap <silent> <leader>gpu :15split \| term git push<CR>
-
-"""""""""""""""""""""""""plasticboy/vim-markdown settings"""""""""""""""""""
+"""""""""""""""""""""""""vim-markdown settings"""""""""""""""""""
 " Disable header folding
 let g:vim_markdown_folding_disabled = 1
 
@@ -259,7 +218,7 @@ nmap s <Nop>
 omap s <Nop>
 
 """"""""""""""""""""""""""""vimtex settings"""""""""""""""""""""""""""""
-if ( g:is_win || g:is_mac ) && executable('latex')
+if executable('latex')
   " Hacks for inverse search to work semi-automatically,
   " see https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/.
   function! s:write_server_name() abort
@@ -320,11 +279,6 @@ if ( g:is_win || g:is_mac ) && executable('latex')
   endif
 endif
 
-""""""""""""""""""""""""""""vim-startify settings""""""""""""""""""""""""""""
-" Do not change working directory when opening files.
-let g:startify_change_to_dir = 0
-let g:startify_fortune_use_unicode = 1
-
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
 " Improve performance
 let g:matchup_matchparen_deferred = 1
@@ -371,16 +325,20 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
       \ }
   \ }
 
-  function! s:setup_firenvim() abort
-    set noruler noshowcmd
-    set laststatus=0 showtabline=0
+  function s:setup_firenvim() abort
+    set signcolumn=no
+    set noruler
+    set noshowcmd
+    set laststatus=0
+    set showtabline=0
   endfunction
 
   augroup firenvim
     autocmd!
-    autocmd FileType text call s:setup_firenvim()
-    autocmd BufNewFile github.com_*.txt set filetype=markdown
-    autocmd BufNewFile stackoverflow.com_*.txt set filetype=markdown
+    autocmd BufEnter * call s:setup_firenvim()
+    autocmd BufEnter sqlzoo*.txt set filetype=sql
+    autocmd BufEnter github.com_*.txt set filetype=markdown
+    autocmd BufEnter stackoverflow.com_*.txt set filetype=markdown
   augroup END
 endif
 

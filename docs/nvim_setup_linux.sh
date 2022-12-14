@@ -68,7 +68,7 @@ fi
 
 # Install some Python packages used by Nvim plugins.
 echo "Installing Python packages"
-declare -a py_packages=("pynvim" 'python-lsp-server[all]' "black" "vim-vint" "pyls-isort" "pylsp-mypy")
+declare -a PY_PACKAGES=("pynvim" 'python-lsp-server[all]' "black" "vim-vint" "pyls-isort" "pylsp-mypy")
 
 if [[ "$SYSTEM_PYTHON" = true ]]; then
     echo "Using system Python to install $(PY_PACKAGES)"
@@ -76,12 +76,12 @@ if [[ "$SYSTEM_PYTHON" = true ]]; then
     # If we use system Python, we need to install these Python packages under
     # user HOME, since we do not have permissions to install them under system
     # directories.
-    for p in "${py_packages[@]}"; do
+    for p in "${PY_PACKAGES[@]}"; do
         pip install --user "$p"
     done
 else
     echo "Using custom Python to install $(PY_PACKAGES)"
-    for p in "${py_packages[@]}"; do
+    for p in "${PY_PACKAGES[@]}"; do
         "$CONDA_DIR/bin/pip" install "$p"
     done
 fi
@@ -112,6 +112,7 @@ if [[ -z "$(command -v node)" ]]; then
     fi
 else
     echo "Node.js is already installed. Skip installing it."
+    NODE_DIR="$(realpath $(dirname $(which node))/..)"
 fi
 
 # Install vim-language-server
@@ -245,6 +246,7 @@ fi
 
 echo "Setting up config and installing plugins"
 if [[ -d "$NVIM_CONFIG_DIR" ]]; then
+    rm -rf "$NVIM_CONFIG_DIR.backup"
     mv "$NVIM_CONFIG_DIR" "$NVIM_CONFIG_DIR.backup"
 fi
 

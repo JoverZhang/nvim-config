@@ -9,23 +9,26 @@
     <a>
       <img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?style=flat-square&logo=windows&color=0078D6&logoColor=white" />
     </a>
-    <a href="https://github.com/jdhao/nvim-config/commits">
-      <img src="https://badgen.net/github/commits/jdhao/nvim-config" alt="Commit number" />
-    </a>
-    <a href="https://github.com/jdhao/nvim-config/network">
-      <img alt="Forks" src="https://badgen.net/github/forks/jdhao/nvim-config">
-    </a>
-    <a href="https://github.com/jdhao/nvim-config/stargazers">
-      <img alt="Stars" src="https://badgen.net/github/stars/jdhao/nvim-config">
-    </a>
     <a href="https://github.com/jdhao/nvim-config/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/jdhao/nvim-config" />
     </a>
     <a href="https://github.com/neovim/neovim/releases/tag/stable">
-      <img src="https://img.shields.io/badge/Neovim-0.7.2-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
+      <img src="https://img.shields.io/badge/Neovim-0.8.1-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
     </a>
     <a href="https://github.com/jdhao/nvim-config/search?l=vim-script">
       <img src="https://img.shields.io/github/languages/top/jdhao/nvim-config" alt="Top languages"/>
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/graphs/commit-activity">
+      <img src="https://img.shields.io/github/commit-activity/m/jdhao/nvim-config?style=flat-square" />
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/releases/tag/v0.8.1">
+      <img src="https://img.shields.io/github/commits-since/jdhao/nvim-config/v0.8.1?style=flat-square" />
+    </a>
+    <a href="https://github.com/jdhao/nvim-config/graphs/contributors">
+      <img src="https://img.shields.io/github/contributors/jdhao/nvim-config?style=flat-square" />
+    </a>
+    <a>
+      <img src="https://img.shields.io/github/repo-size/jdhao/nvim-config?style=flat-square" />
     </a>
     <a href="https://github.com/jdhao/nvim-config/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/jdhao/nvim-config?style=flat-square&logo=GNU&label=License" alt="License"/>
@@ -58,7 +61,7 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Code, snippet, word auto-completion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
 + Language server protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 + Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
-+ Better escaping from insert mode via [better-escape.vim](https://github.com/jdhao/better-escape.vim).
++ Better escaping from insert mode via [better-escape.vim](https://github.com/nvim-zh/better-escape.vim).
 + Ultra-fast project-wide fuzzy searching via [LeaderF](https://github.com/Yggdroot/LeaderF).
 + Faster code commenting via [vim-commentary](https://github.com/tpope/vim-commentary).
 + Faster matching pair insertion and jump via [delimitMate](https://github.com/Raimondi/delimitMate).
@@ -74,11 +77,10 @@ and how to set up on different platforms (Linux, macOS, and Windows).
 + Asynchronous code execution via [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim).
 + Code highlighting via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 + Code editing using true nvim inside browser via [firenvim](https://github.com/glacambre/firenvim).
-+ Color theme via [vim-gruvbox8](https://github.com/lifepillar/vim-gruvbox8) and other beautiful themes.
-+ Markdown writing and previewing via [vim-markdown](https://github.com/plasticboy/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
-+ LaTeX editing and previewing via [vimtex](https://github.com/lervag/vimtex) <sup id="a1">[1](#f1)</sup>.
++ Beautiful colorscheme via [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material) and other colorschemes.
++ Markdown writing and previewing via [vim-markdown](https://github.com/preservim/vim-markdown) and [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim).
++ LaTeX editing and previewing via [vimtex](https://github.com/lervag/vimtex)
 + Animated GUI style notification via [nvim-notify](https://github.com/rcarriga/nvim-notify).
-+ Smooth scroll experience via [neoscroll](https://github.com/karb94/neoscroll.nvim).
 + Tags navigation via [vista](https://github.com/liuchengxu/vista.vim).
 + Code formatting via [Neoformat](https://github.com/sbdchd/neoformat).
 + Undo management via [vim-mundo](https://github.com/simnalamburt/vim-mundo)
@@ -167,6 +169,8 @@ Some of the shortcuts I use frequently are listed here. In the following shortcu
 | `<leader>gc`      | Normal        | Linux/macOS/Win | Run git commit                                                           |
 | `<leader>gpl`     | Normal        | Linux/macOS/Win | Run git pull                                                             |
 | `<leader>gpu`     | Normal        | Linux/macOS/Win | Run git push                                                             |
+| `<leader>gl`      | Normal/Visual | Linux/macOS/Win | Get perm link for current/visually-select lines
+| `<leader>gb`      | Normal        | macOS           | Browse current git repo in browser
 | `<F9>`            | Normal        | Linux/macOS/Win | Compile&run current source file (for C++, LaTeX, Lua, Python)            |
 | `<F11>`           | Normal        | Linux/macOS/Win | Toggle spell checking                                                    |
 | `<F12>`           | Normal        | Linux/macOS/Win | Toggle paste mode                                                        |
@@ -212,5 +216,3 @@ You may also be interested in my posts on configuring Nvim:
 + [Config nvim on Linux for Python development](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
 + [Nvim config on Windows 10](https://jdhao.github.io/2018/11/15/neovim_configuration_windows/)
 + [Nvim-qt config on Windows 10](https://jdhao.github.io/2019/01/17/nvim_qt_settings_on_windows/)
-
-<b id="f1">1:</b> Not enabled for Linux, you need to tweak [`lua/plugins.lua`](lua/plugins.lua) and change the condition for installing vimtex.[↩](#a1)
