@@ -10,16 +10,16 @@ M.colorscheme2dir = {
   onedark = "onedark.nvim",
   edge = "edge",
   sonokai = "sonokai",
-  gruvbox_material = "gruvbox-material",
-  nord = "nord.nvim",
-  everforest = "everforest",
-  nightfox = "nightfox.nvim",
+--  gruvbox_material = "gruvbox-material",
+--  nord = "nord.nvim",
+--  everforest = "everforest",
+--  nightfox = "nightfox.nvim",
   kanagawa = "kanagawa.nvim",
   catppuccin = "catppuccin",
-  rose_pine = "rose-pine",
+--  rose_pine = "rose-pine",
   onedarkpro = "onedarkpro.nvim",
   monokai = "monokai.nvim",
-  material = "material.nvim",
+--  material = "material.nvim",
 }
 
 M.gruvbox8 = function()
@@ -106,11 +106,11 @@ end
 
 M.onedarkpro = function()
   require("onedarkpro").setup({
-    dark_theme = "onedark", -- The default dark theme
+    --dark_theme = "onedark", -- The default dark theme
   })
 
   -- set colorscheme after options
-  vim.cmd('colorscheme onedarkpro')
+  vim.cmd('colorscheme onedark')
 end
 
 M.monokai = function()
