@@ -62,7 +62,7 @@ nnoremap 0 g0
 xnoremap $ g_
 
 " Jump to matching pairs easily in normal mode
-nnoremap <Tab> %
+"nnoremap <Tab> %
 
 " Go to start or end of line easier
 nnoremap H ^
