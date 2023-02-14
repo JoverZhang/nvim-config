@@ -51,9 +51,9 @@ let g:Lf_WildIgnore = {
   \}
 
 " Do not show fancy icons for Linux server.
-if g:is_linux
-  let g:Lf_ShowDevIcons = 0
-endif
+"if g:is_linux
+  "let g:Lf_ShowDevIcons = 0
+"endif
 
 " Only fuzzy-search files names
 let g:Lf_DefaultMode = 'FullPath'
@@ -103,11 +103,13 @@ nnoremap <silent> <leader>fb :<C-U>Leaderf buffer --popup<CR>
 " Search recent files
 nnoremap <silent> <leader>fr :<C-U>Leaderf mru --popup --absolute-path<CR>
 
-let g:Lf_PopupColorscheme = 'gruvbox_material'
+let g:Lf_PopupColorscheme = 'onedark'
 
 " Change keybinding in LeaderF prompt mode, use ctrl-n and ctrl-p to navigate
 " items.
-let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
+"let g:Lf_CommandMap = {'<C-J>': ['<C-N>'], '<C-K>': ['<C-P>']}
+
+let g:Lf_PreviewInPopup = 1
 
 """"""""""""""""""""""""""""open-browser.vim settings"""""""""""""""""""
 if g:is_win || g:is_mac
@@ -178,7 +180,7 @@ let g:vim_markdown_toc_autofit = 1
 
 """""""""""""""""""""""""markdown-preview settings"""""""""""""""""""
 " Only setting this for suitable platforms
-if g:is_win || g:is_mac
+if g:is_win || g:is_mac || g:is_linux
   " Do not close the preview tab when switching to other buffers
   let g:mkdp_auto_close = 0
 
@@ -188,7 +190,7 @@ if g:is_win || g:is_mac
 endif
 
 """"""""""""""""""""""""vim-grammarous settings""""""""""""""""""""""""""""""
-if g:is_mac
+if g:is_mac || g:is_linux
   let g:grammarous#languagetool_cmd = 'languagetool'
   let g:grammarous#disabled_rules = {
       \ '*' : ['WHITESPACE_RULE', 'EN_QUOTES', 'ARROWS', 'SENTENCE_WHITESPACE',
@@ -301,6 +303,8 @@ if g:is_win
   " Command output encoding for Windows
   let g:asyncrun_encs = 'gbk'
 endif
+
+nnoremap <leader>r :AsyncRun
 
 """"""""""""""""""""""""""""""firenvim settings""""""""""""""""""""""""""""""
 if exists('g:started_by_firenvim') && g:started_by_firenvim

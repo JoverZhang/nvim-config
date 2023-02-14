@@ -14,7 +14,7 @@ local custom_attach = function(client, bufnr)
     opts.buffer = bufnr
     keymap.set(mode, l, r, opts)
   end
-
+  map('n', 'gD', vim.lsp.buf.declaration, { desc = "go to declaration"})
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
   map("n", "<C-]>", vim.lsp.buf.definition)
   map("n", "K", vim.lsp.buf.hover)

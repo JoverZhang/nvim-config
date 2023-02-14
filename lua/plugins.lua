@@ -65,7 +65,7 @@ packer.startup {
     -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
 
-    if vim.g.is_mac then
+    if vim.g.is_mac or vim.g.is_linux then
       use {
         "nvim-treesitter/nvim-treesitter",
         event = "BufEnter",
@@ -267,7 +267,7 @@ packer.startup {
     use { "godlygeek/tabular", cmd = { "Tabularize" } }
 
     -- Markdown previewing (only for Mac and Windows)
-    if vim.g.is_win or vim.g.is_mac then
+    if vim.g.is_win or vim.g.is_mac or vim.g.is_linux then
       use {
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
@@ -277,7 +277,7 @@ packer.startup {
 
     use { "folke/zen-mode.nvim", cmd = "ZenMode", config = [[require('config.zen-mode')]] }
 
-    if vim.g.is_mac then
+    if vim.g.is_mac or vim.g.is_linux then
       use { "rhysd/vim-grammarous", ft = { "markdown" } }
     end
 
@@ -316,7 +316,7 @@ packer.startup {
     use { "cespare/vim-toml", ft = { "toml" }, branch = "main" }
 
     -- Edit text area in browser using nvim
-    if vim.g.is_win or vim.g.is_mac then
+    if vim.g.is_win or vim.g.is_mac or vim.g.is_linux then
       use {
         "glacambre/firenvim",
         run = function()
